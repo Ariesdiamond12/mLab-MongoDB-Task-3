@@ -20,38 +20,40 @@ LibraryDB> db.Authors.insertMany([ { _id: 1, name: "George Orwell", nationality:
 
  # READ
  - so to READ your data you must use the find() method - this method reads all the documents in MongoDB OR finds all the data in the collection that you have created
- - so in the terminal you are going to type the command e.g db.Books.find() 
- <!-- ScreenShot -->
+ -so in the terminal you are going to type the command e.g db.Books.find() 
+   ![Screenshot (10)](https://github.com/user-attachments/assets/6452015b-955d-43c5-87cc-441f6d5be97e)
  - so to find the book specific book by Title "To Kill a Mockingbird" you type db.Books.find({title:"To Kill a Mockingbird"})/
- <!-- ScreenShot -->
- - to find all the books with the specific author (author_id:5) type db.Books.find({author_id: 5})
-<!-- ScreenShot -->
+   ![Screenshot (11)](https://github.com/user-attachments/assets/778902df-ac5e-45f4-9c9f-3feef214da74)
+- to find all the books with the specific author (author_id:5) type db.Books.find({author_id: 5})
+   ![Screenshot (12)](https://github.com/user-attachments/assets/3955e709-f8b2-4f79-afae-a3621971a457)
 - to all the available books type db.Books.find({available: true})
-<!-- ScreenShot -->
+   ![Screenshot (13)](https://github.com/user-attachments/assets/e322dd55-4135-4788-b535-eccf6c47b03e)
 
 # UPDATE
 - to update Book availability type db.Books.updateOne({_id: 3}, {$set: {available:false}})
-<!-- ScreenShot -->
+![Screenshot (14)](https://github.com/user-attachments/assets/39f36472-b683-4d0c-bc20-086603caf032)
 - to add a genre type command db.Books.updateOne({_id: 8}, {$addToSet: {genres: "Documentary"}})
-<!-- ScreenShot -->
+  ![Screenshot (15)](https://github.com/user-attachments/assets/b06bcffc-6d7d-43f9-b3a6-3f76b82b9852)
 - to add a borrowed book to the Patron type db.Patrons.updateOne({_id: 5}, {$push: {borrow}})
-<!-- ScreenShot -->
+  ![Screenshot (16)](https://github.com/user-attachments/assets/5d07b74c-9a2c-4aab-a4d8-42a764665e59)
 
 # DELETE
 - to delete a book by the title (title: "Brave New World") type db.Books.deleteOne({title: "Brave New World"})
-<!-- ScreenShot -->
+![Screenshot (18)](https://github.com/user-attachments/assets/e4e215d6-144a-4bd7-b534-4cd565492dfb)
 - to delete an author (_id: 3) type db.Authors.deleteOne({})
+![Screenshot (19)](https://github.com/user-attachments/assets/2516ec7c-0fd6-4603-ade6-725ef5fef540)
 
 # Advanced Queries with Operators
 - to find books published after 1950 using $gt type db.Books.find({})
 <!-- ScreenShot -->
 - to find all american authors using $eq type db.Authors.find({nationality: {$eq: "American"}})
-<!-- ScreenShot -->
+![Screenshot (23)](https://github.com/user-attachments/assets/289e96f7-6638-4ac4-bb67-d07136232065)
 - to set all books to available using $set type db.Books.updateMany({}, {$set: {available: true}})
-<!-- ScreeShot -->
+
 - to all books that are available and published after 1950 type db.Books.find({available: true, published_year: {$gt:1950}})
-<!-- ScreenShot -->
+![Screenshot (24)](https://github.com/user-attachments/assets/59d22c3a-737f-48b1-919d-25c9cc12c9d5)
 -to find authors whose name contain "George" type db.Authors.find({name: {$regex: "George", $options:"i"}})
-<!-- ScreenShot -->
+![Screenshot (25)](https://github.com/user-attachments/assets/99e6b740-bf84-4aa1-8a99-21e60b242241)
+
 - to increment the published year of 1869 by 1 type db.Books.updateOne({published_year: 1869}, {$inc: {published_year:1}})
-<!-- ScreenShot -->
+  ![Screenshot (26)](https://github.com/user-attachments/assets/a3a99dac-9e20-4e7b-bd5f-fecb82e8e1ab)
