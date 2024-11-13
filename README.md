@@ -21,38 +21,49 @@
  - so to READ your data you must use the find() method - this method reads all the documents in MongoDB OR finds all the data in the collection that you have created
  -so in the terminal you are going to type the command e.g db.Books.find() 
    ![Screenshot (10)](https://github.com/user-attachments/assets/6452015b-955d-43c5-87cc-441f6d5be97e)
+   
  - so to find the book specific book by Title "To Kill a Mockingbird" you type db.Books.find({title:"To Kill a Mockingbird"})/
    ![Screenshot (11)](https://github.com/user-attachments/assets/778902df-ac5e-45f4-9c9f-3feef214da74)
+   
 - to find all the books with the specific author (author_id:5) type db.Books.find({author_id: 5})
    ![Screenshot (12)](https://github.com/user-attachments/assets/3955e709-f8b2-4f79-afae-a3621971a457)
+  
 - to all the available books type db.Books.find({available: true})
    ![Screenshot (13)](https://github.com/user-attachments/assets/e322dd55-4135-4788-b535-eccf6c47b03e)
 
 # UPDATE
 - to update Book availability type db.Books.updateOne({_id: 3}, {$set: {available:false}})
-![Screenshot (14)](https://github.com/user-attachments/assets/39f36472-b683-4d0c-bc20-086603caf032)
+  ![Screenshot (14)](https://github.com/user-attachments/assets/39f36472-b683-4d0c-bc20-086603caf032)
+
 - to add a genre type command db.Books.updateOne({_id: 8}, {$addToSet: {genres: "Documentary"}})
-  ![Screenshot (15)](https://github.com/user-attachments/assets/b06bcffc-6d7d-43f9-b3a6-3f76b82b9852)
+  ![Screenshot (15)](https://github.com/user-attachments/assets/89727ff5-7cc0-43ca-9905-39d10e43bf4b)
+
 - to add a borrowed book to the Patron type db.Patrons.updateOne({_id: 5}, {$push: {borrow}})
-  ![Screenshot (16)](https://github.com/user-attachments/assets/5d07b74c-9a2c-4aab-a4d8-42a764665e59)
+  ![Screenshot (16)](https://github.com/user-attachments/assets/c1197e7d-70af-42a4-8709-88d736334a24)
 
 # DELETE
 - to delete a book by the title (title: "Brave New World") type db.Books.deleteOne({title: "Brave New World"})
-![Screenshot (18)](https://github.com/user-attachments/assets/e4e215d6-144a-4bd7-b534-4cd565492dfb)
+ ![Screenshot (18)](https://github.com/user-attachments/assets/e4c7e8d2-3812-4482-beba-f10d5c2dafbf)
+
 - to delete an author (_id: 3) type db.Authors.deleteOne({})
-![Screenshot (19)](https://github.com/user-attachments/assets/2516ec7c-0fd6-4603-ade6-725ef5fef540)
+ ![Screenshot (19)](https://github.com/user-attachments/assets/43f58195-7448-445c-a137-342717f8eef5)
 
 # Advanced Queries with Operators
 - to find books published after 1950 using $gt type db.Books.find({})
-<!-- ScreenShot -->
+ ![Screenshot (21)](https://github.com/user-attachments/assets/7ea944cd-77fd-46ac-a92c-57b26b8c188b)
+
 - to find all american authors using $eq type db.Authors.find({nationality: {$eq: "American"}})
-![Screenshot (23)](https://github.com/user-attachments/assets/289e96f7-6638-4ac4-bb67-d07136232065)
+![Screenshot (22)](https://github.com/user-attachments/assets/2804663e-60c5-4bc9-9816-825128b53311)
+
+
 - to set all books to available using $set type db.Books.updateMany({}, {$set: {available: true}})
+ ![Screenshot (23)](https://github.com/user-attachments/assets/0ca7cb31-d395-4b4b-b07d-008e49ac8f5c)
 
 - to all books that are available and published after 1950 type db.Books.find({available: true, published_year: {$gt:1950}})
-![Screenshot (24)](https://github.com/user-attachments/assets/59d22c3a-737f-48b1-919d-25c9cc12c9d5)
+ ![Screenshot (24)](https://github.com/user-attachments/assets/59d22c3a-737f-48b1-919d-25c9cc12c9d5)
+
 -to find authors whose name contain "George" type db.Authors.find({name: {$regex: "George", $options:"i"}})
-![Screenshot (25)](https://github.com/user-attachments/assets/99e6b740-bf84-4aa1-8a99-21e60b242241)
+ ![Screenshot (25)](https://github.com/user-attachments/assets/88256ff3-9247-457f-bd2f-f18f0ae4859f)
 
 - to increment the published year of 1869 by 1 type db.Books.updateOne({published_year: 1869}, {$inc: {published_year:1}})
   ![Screenshot (26)](https://github.com/user-attachments/assets/a3a99dac-9e20-4e7b-bd5f-fecb82e8e1ab)
